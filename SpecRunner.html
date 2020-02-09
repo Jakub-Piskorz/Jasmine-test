@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v3.5.0</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-3.5.0/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-3.5.0/jasmine.css">
+
+  <script src="lib/jasmine-3.5.0/jasmine.js"></script>
+  <script src="lib/jasmine-3.5.0/jasmine-html.js"></script>
+  <script src="lib/jasmine-3.5.0/boot.js"></script>
+  <script>
+
+
+    
+    const merge = (left, right) => {
+      const newNums = [];
+      return [...newNums, ...left, ...right];
+    };
+
+    const mergeSort = nums => {
+      if (nums.length === 1) return nums;
+      const middle = Math.floor(nums.length/2);
+      const left = nums.slice(0,middle);
+      const right = nums.slice(middle);
+      return merge(mergeSort(left), mergeSort(right));
+    }
+
+    describe('Merge sort test', () => {
+      it('short example', () => {
+        expect(mergeSort([4,2,3,6])).toBe([2,3,4,6]);
+      });
+      it('mid example', () => {
+        expect(mergeSort([4,2,3,6])).toBe([2,3,4,6]);
+      });
+      it('long example', () => {
+        expect(mergeSort([4,2,3,6])).toBe([2,3,4,6]);
+      });
+    });
+
+  </script>            
+</head>
+
+<body>
+</body>
+</html>
