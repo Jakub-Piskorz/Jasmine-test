@@ -29,6 +29,23 @@ class LinkedList {
             } else return null;
         }
     }
+    pop() {
+        if (this.length >= 2) {
+            let currentNode = this.head;
+            let NodeToDelete = this.tail;
+            for (let i = 0; i < this.length - 2; i++) {
+                currentNode = currentNode.next;
+            }
+            delete currentNode.next;
+            currentNode.next = null;
+            this.tail = currentNode;
+            length--;
+            return NodeToDelete;
+        } else if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else return null;
+    }
 }
 
 class Node {
@@ -44,13 +61,16 @@ const test = () => {
     return console.log(someArray.head);
 }
 
-
-
-
-
-
-
-let node = document.createTextNode(test());
-para.appendChild(node);
-let main = document.querySelector("main");
-main.appendChild(para);
+describe('linkedList', () => {
+    beforeEach(() => {
+        arr = new LinkedList();
+        arr.push(1);
+        arr.push(11);
+        arr.push(22);
+        arr.push(3333);
+        arr.push("nein");
+    })
+    it('pop test 1', () => {
+        expect(arr.pop().value).toEqual('nein');
+    })
+});
