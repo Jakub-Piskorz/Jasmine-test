@@ -1,5 +1,3 @@
-let para = document.createElement("p");
-
 class LinkedList {
     constructor() {
         this.head = null;
@@ -16,8 +14,8 @@ class LinkedList {
         }
         this.length++;
     }
-    _compare(a, b) {
-        return a === b;
+    _compare(valueToSearch, nodeValue) {
+        return valueToSearch === nodeValue;
     }
     get(value) {
         let currentNode = this.head;
@@ -46,6 +44,15 @@ class LinkedList {
             this.tail = null;
         } else return null;
     }
+    find(valueToSearch, testFunc = this._compare) {
+        let currentNode = this.head;
+        if (testFunc(valueToSearch, currentNode.value)) return 0;
+        for (let i = 0; i < this.length - 1; i++) {
+            currentNode = currentNode.next;
+            if (testFunc(valueToSearch, currentNode.value)) return i+1;
+        }
+        return null;
+    }
 }
 
 class Node {
@@ -53,12 +60,6 @@ class Node {
         this.value = value;
         this.next = null;
     }
-}
-
-const test = () => {
-    const someArray = new LinkedList();
-    someArray.push("Jakub");
-    return console.log(someArray.head);
 }
 
 describe('linkedList', () => {
@@ -70,7 +71,15 @@ describe('linkedList', () => {
         arr.push(3333);
         arr.push("nein");
     })
-    it('pop test 1', () => {
-        expect(arr.pop().value).toEqual('nein');
+    it('.pop()', () => {
+        expect(arr.pop().value).toBe('nein');
+    })
+    it('.find()', () => {
+        expect(arr.find(3333)).toBe(3);
+        expect(arr.find("nein")).toBe(4);
+    })
+    it('.find() with custom test', () => {
+        expect(arr.find(2000, (valueToSearch, nodeValue) => nodeValue < valueToSearch)).toBe(0);
+        expect(arr.find(2000, (valueToSearch, nodeValue) => nodeValue > valueToSearch)).toBe(3);
     })
 });
