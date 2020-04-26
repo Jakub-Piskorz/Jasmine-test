@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <style>
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>Hello! I'm going to try AJAX using PHP.</p>
+    <p>Please type "name" and submit form to get my name.</p>
+    <form submit="myFirst.php" method="GET">
+        <label for="name" id="label-name">Name: </label><input id="name" name="name" type="text" />
+        <input type="button" id="submit" value="Submit form" />
+    </form>
+    <p id="answer">There is no anwser (yet).</p>
+    <script src="simple-test.js"></script>
+</body>
+</html>

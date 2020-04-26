@@ -2,10 +2,10 @@
 const _more = () => {
     value = 0;
     return (add) => {
-        value += add;
+        if (typeof add == "number")value += add;
         return value;
     }
-}
+};
 
 const more = _more();
 
